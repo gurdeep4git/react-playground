@@ -18,13 +18,26 @@ export default class News extends Component {
         this.state = this.initState;
     }
 
+    updateNews = async () => {
+        this.setState({ loading: true });
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2e424527b4ec4c0abd824126db0ea4fe&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        const parsedData = await this.getData(url);
+        console.log(parsedData);
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            loading: false
+        })
+    }
+
     async componentDidMount() {
         this.setState({ loading: true });
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2e424527b4ec4c0abd824126db0ea4fe&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         const parsedData = await this.getData(url);
+        console.log(parsedData);
         this.setState({
             articles: parsedData.articles,
-            totalResults: parsedData.articles.length,
+            totalResults: parsedData.totalResults,
             loading: false
         })
 
@@ -37,28 +50,13 @@ export default class News extends Component {
     }
 
     handlePrevClick = async () => {
-        this.setState({ loading: true });
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2e424527b4ec4c0abd824126db0ea4fe&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
-        const parsedData = await this.getData(url);
-        this.setState({
-            articles: parsedData.articles,
-            page: this.state.page - 1,
-            loading: false
-        })
+        this.setState({ page: this.state.page - 1 });
+        this.updateNews();
     }
 
     handleNextClick = async () => {
-        if (this.state.page + 1 < Math.ceil(this.state.totalResults / this.props.pageSize)) { }
-        else {
-            this.setState({ loading: true });
-            const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2e424527b4ec4c0abd824126db0ea4fe&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
-            const parsedData = await this.getData(url);
-            this.setState({
-                articles: parsedData.articles,
-                page: this.state.page + 1,
-                loading: false
-            })
-        }
+        this.setState({ page: this.state.page + 1 });
+        this.updateNews();
     }
 
 
@@ -74,6 +72,9 @@ export default class News extends Component {
                             description={element.description ? element.description : ''}
                             imageUrl={element.urlToImage ? element.urlToImage : ''}
                             url={element.url}
+                            author={element.author}
+                            date={element.publishedAt}
+                            source={element.source.name}
                         />
                     </div>
                 )
@@ -82,6 +83,7 @@ export default class News extends Component {
 
         return (
             <div className="container my-3">
+
                 <h2>Top headlines</h2>
                 {this.state.loading ?
                     (<Spinner />) :
@@ -89,7 +91,7 @@ export default class News extends Component {
                 }
                 <div className="d-flex justify-content-between mt-4">
                     <button disabled={this.state.page <= 1} type="button" onClick={this.handlePrevClick} className="btn btn-dark">Prev</button>
-                    <button disabled={this.state.page + 1 < Math.ceil(this.state.totalResults / this.props.pageSize)} type="button" onClick={this.handleNextClick} className="btn btn-dark">Next</button>
+                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} type="button" onClick={this.handleNextClick} className="btn btn-dark">Next</button>
                 </div>
             </div>
         )
