@@ -18,6 +18,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/jira-app">Jira-app</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
