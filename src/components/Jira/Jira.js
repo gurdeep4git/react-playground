@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddTask from './AddTask';
 import EditTask from './EditTask';
 import Tasks from './Tasks';
+import ErrorBoundary from '../../ErrorBoundary';
 
 export default function Jira() {
     const initTasks = [
@@ -64,7 +65,9 @@ export default function Jira() {
                         }
                     </div>
                     <div className='col-7'>
-                        <Tasks tasks={tasks} editTaskCallback={editTask} deleteTaskCallback={deleteTask} />
+                        <ErrorBoundary>
+                            <Tasks tasks={tasks} editTaskCallback={editTask} deleteTaskCallback={deleteTask} />
+                        </ErrorBoundary>
                     </div>
                 </div>
             </div>
