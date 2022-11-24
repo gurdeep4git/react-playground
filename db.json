@@ -1,0 +1,25 @@
+{
+    "dishes": [
+        {
+            "id": 1,
+            "title": "Pizza",
+            "description": "Some description",
+            "requiredTime": "150",
+            "rating": 5,
+            "ingredients": [
+                {
+                    "title": "Bread base",
+                    "amount": 1
+                },
+                {
+                    "title": "Cheese",
+                    "amount": 100
+                }
+            ],
+            "steps": [
+                "Prepare Bread base",
+                "Put it in oven"
+            ]
+        }
+    ]
+}

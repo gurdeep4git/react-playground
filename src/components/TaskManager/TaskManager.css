@@ -1,0 +1,9 @@
+.task-manager-board {
+    background-color: #e2e2e2;
+    height: calc(100vh - 86px);
+    margin: 15px 0;
+}
+
+.space-all {
+    padding: 10px;
+}

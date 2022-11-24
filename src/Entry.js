@@ -7,6 +7,8 @@ import About from './components/About/About';
 import Home from './components/Home/Home';
 import Jira from './components/Jira/Jira';
 import JobForm from './components/JobForm/JobForm';
+import Cookz from './components/Cookz/Cookz';
+import TaskManager from './components/TaskManager/TaskManager';
 
 function Entry() {
 
@@ -22,6 +24,8 @@ function Entry() {
                     <Route exact path="/about" element={<About />} />
                     <Route exact path="/jira-app" element={<Jira />} />
                     <Route exact path="/job-form" element={<JobForm />} />
+                    <Route exact path="/cookz" element={<Cookz />} />
+                    <Route exact path="/task-manager" element={<TaskManager />} />
                 </Routes>
             </div>
         </Router>

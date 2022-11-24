@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PageTitle from '../UI/PageTitle'
 
 export default function JobForm() {
 
@@ -17,6 +18,7 @@ export default function JobForm() {
     const [errorsData, setErrorsData] = useState({});
 
     const genders = ["Male", "Female", "Transgender"];
+
     const currentEmploymentOptions = [
         { 'text': 'Employed', 'value': 'E' },
         { 'text': 'Unemployed', 'value': 'UE' },
@@ -83,7 +85,7 @@ export default function JobForm() {
 
     return (
         <div className='container'>
-            <h3 className='my-3'>Job Application Form</h3>
+            <PageTitle title="Job Application Form" />
             <form onSubmit={handleFormSubmit}>
                 <div className='row'>
                     <div className='col-4'>
@@ -154,7 +156,13 @@ export default function JobForm() {
                             {currentEmploymentOptions.map((ceo, index) => (
                                 <div key={index}>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="currentEmploymentStatus" checked={ceo.value === formData.currentEmploymentStatus} id={ceo.text} value={ceo.value} onChange={handleChange} />
+                                        <input className="form-check-input"
+                                            type="radio"
+                                            name="currentEmploymentStatus"
+                                            checked={ceo.value === formData.currentEmploymentStatus}
+                                            id={ceo.text}
+                                            value={ceo.value}
+                                            onChange={handleChange} />
                                         <label className="form-check-label" htmlFor={ceo.text}>
                                             {ceo.text}
                                         </label>

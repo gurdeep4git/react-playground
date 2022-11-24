@@ -38,6 +38,12 @@ function Navbar(props) {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/job-form">Job Form</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/cookz">Cookz</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/task-manager">Task Manger</Link>
+                            </li>
                         </ul>
                         <span className="navbar-text">
                             {currentUser && currentUser.username}

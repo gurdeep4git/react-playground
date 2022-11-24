@@ -1,0 +1,15 @@
+.list-bg {
+    background: #b6b2b2;
+    height: calc(100vh - 86px);
+}
+
+.list-container {
+    background: #b6b2b2;
+    height: calc(100vh - 190px);
+    margin: 10px 0;
+    overflow: auto;
+}
+
+.button-container {
+    text-align: center;
+}

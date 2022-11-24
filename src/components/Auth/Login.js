@@ -22,7 +22,7 @@ export default function Login(props) {
 
         props.setCurrentUser(loggedInUser);
 
-        navigate("/jira-app");
+        navigate("/home");
     }
 
     return (
