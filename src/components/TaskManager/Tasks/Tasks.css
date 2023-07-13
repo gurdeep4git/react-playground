@@ -1,0 +1,9 @@
+.tasks-container {
+    height: calc(100vh - 190px);
+    margin: 10px 0;
+    overflow: auto;
+}
+
+.button-container-1 {
+    text-align: right;
+}

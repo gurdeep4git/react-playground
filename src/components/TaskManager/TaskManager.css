@@ -7,3 +7,9 @@
 .space-all {
     padding: 10px;
 }
+
+.card-item.active {
+    background-color: #0069d9;
+    border-color: #0062cc;
+    color: #fff;
+}
